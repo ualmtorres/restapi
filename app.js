@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 Genre = require('./models/genre');
+Book = require('./models/book');
 
 mongoose.connect('mongodb://localhost/bookstore');
 var db = mongoose.connection;
@@ -18,6 +19,16 @@ app.get('/api/genres', function(req, res) {
             throw err;
         }
         res.json(genres);
+    })
+
+});
+
+app.get('/api/books', function(req, res) {
+    Book.getBooks(function(err, books) {
+        if (err) {
+            throw err;
+        }
+        res.json(books);
     })
 
 });
