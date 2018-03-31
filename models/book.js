@@ -38,3 +38,7 @@ module.exports.getBooks = function (callback){
     Book.find().exec(callback)
 }
 
+// Get Book by id
+module.exports.getBookById = function (id, callback){
+    Book.findById(id).exec(callback)
+}
