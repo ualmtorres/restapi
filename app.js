@@ -46,6 +46,17 @@ app.get('/api/books', function(req, res) {
 
 });
 
+app.post('/api/books', function(req, res) {
+    var book = req.body;
+    Book.addBook(book, function(err, book) {
+        if (err) {
+            throw err;
+        }
+        res.json(book);
+    })
+
+});
+
 app.get('/api/books/:_id', function(req, res) {
     Book.getBookById(req.params._id, function(err, book) {
         if (err) {
