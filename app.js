@@ -78,5 +78,17 @@ app.get('/api/books/:_id', function(req, res) {
     })
 
 });
+
+app.put('/api/books/:_id', function(req, res) {
+    var id = req.params._id;
+    var book = req.body;
+    Book.updateBook(id, book, function(err, book) {
+        if (err) {
+            throw err;
+        }
+        res.json(book);
+    })
+
+});
 app.listen(3000);
 console.log("Running en puerto 3000...")
